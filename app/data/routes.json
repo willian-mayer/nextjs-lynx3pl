@@ -1,0 +1,8 @@
+[
+  { "name": "Home", "path": "/" },
+  { "name": "Why Us", "path": "/why-us" },
+  { "name": "Warehousing", "path": "/warehousing" },
+    { "name": "Fulfillment", "path": "/fulfillment" },
+  { "name": "Transloading", "path": "/transloading" },
+  { "name": "Flexible Leasing space", "path": "/space-rental" }
+]
