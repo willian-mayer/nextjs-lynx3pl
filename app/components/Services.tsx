@@ -1,4 +1,4 @@
-// src/components/Services.tsx
+// app/components/Services.tsx
 'use client';
 
 import { motion, useInView } from "framer-motion";
@@ -24,32 +24,35 @@ export default function Services() {
       {/* Grid para móviles: imagen arriba, texto abajo */}
       <div className="grid grid-rows-[auto_auto] sm:flex sm:flex-col items-center justify-center gap-4 w-full h-full">
         
-        {/* Imagen hero responsive */}
+        {/* Imagen hero responsive con padding */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 1.2, delay: 0.4, ease: "easeOut" }}
-          className="w-full h-[50vh] sm:h-[50vh] md:h-[60vh] overflow-hidden md:px-24 relative"
+          className="w-full h-[50vh] sm:h-[50vh] md:h-[60vh] px-4 sm:px-8 md:px-24"
         >
-          {/* Imagen para desktop (md y superior) */}
-          <Image
-            src="/services/service-md.png"
-            alt="Services"
-            fill
-            className="object-cover rounded-lg hidden md:block"
-            sizes="(max-width: 768px) 0vw, 100vw"
-            priority
-          />
-          
-          {/* Imagen para móvil */}
-          <Image
-            src="/services/service-xs.png"
-            alt="Services"
-            fill
-            className="object-cover rounded-lg md:hidden"
-            sizes="(max-width: 768px) 100vw, 0vw"
-            priority
-          />
+          {/* ✅ Contenedor interno con position relative */}
+          <div className="relative w-full h-full overflow-hidden rounded-lg">
+            {/* Imagen para desktop (md y superior) */}
+            <Image
+              src="/services/service-md.png"
+              alt="Services"
+              fill
+              className="object-cover hidden md:block"
+              sizes="(max-width: 768px) 0vw, 100vw"
+              priority
+            />
+            
+            {/* Imagen para móvil */}
+            <Image
+              src="/services/service-xs.png"
+              alt="Services"
+              fill
+              className="object-cover md:hidden"
+              sizes="(max-width: 768px) 100vw, 0vw"
+              priority
+            />
+          </div>
         </motion.div>
 
         {/* Lista de servicios */}
