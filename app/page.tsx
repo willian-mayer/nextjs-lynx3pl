@@ -3,6 +3,7 @@ import Entrance from "./components/Entrance";
 import Services from "./components/Services";
 import Navbar from "./components/Navbar";
 import routesData from "./data/routes.json";
+import Strengths from "./components/Strengths";
 
 export default function Home() {
   return (
@@ -19,6 +20,12 @@ export default function Home() {
         {/* Services y resto de componentes */}
         <section className="snap-start w-full min-h-screen flex justify-center items-center section">
           <Services />
+        </section>
+                <section
+          className="h-screen snap-start flex justify-center items-center section bg-gray-200"
+          id="why-us"
+        >
+          <Strengths />
         </section>
       </div>
     </main>
