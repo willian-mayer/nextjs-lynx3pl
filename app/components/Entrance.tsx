@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { useState } from "react";
 import Image from "next/image";
@@ -15,11 +15,11 @@ export default function Entrance() {
 
   const handleLanguageClick = (langShort: string) => {
     if (langShort === "EN") {
-      const scrollContainer = document.querySelector('.scroll-container');
+      const scrollContainer = document.querySelector(".scroll-container");
       if (scrollContainer) {
         scrollContainer.scrollTo({
           top: window.innerHeight,
-          behavior: "smooth"
+          behavior: "smooth",
         });
       }
     }
@@ -48,17 +48,18 @@ export default function Entrance() {
             key={lang.short}
             onClick={() => handleLanguageClick(lang.short)}
             className={`flex items-center space-x-2 cursor-pointer transition-all ${
-              lang.short === "EN" 
-                ? "hover:underline hover:opacity-80" 
+              lang.short === "EN"
+                ? "hover:underline hover:opacity-80"
                 : "opacity-50 cursor-not-allowed"
             }`}
           >
-            <Image 
-              src={lang.flag} 
+            <Image
+              src={lang.flag}
               alt={`${lang.language} flag`}
               width={20}
               height={15}
               className="w-5 h-auto invisible"
+              quality={100} // ✅ Calidad máxima
             />
             <span className="text-sm font-medium">{lang.short}</span>
           </div>
