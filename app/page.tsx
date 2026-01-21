@@ -4,6 +4,7 @@ import Services from "./components/Services";
 import Navbar from "./components/Navbar";
 import routesData from "./data/routes.json";
 import Strengths from "./components/Strengths";
+import Hero from "./components/Hero";
 
 export default function Home() {
   return (
@@ -21,11 +22,17 @@ export default function Home() {
         <section className="snap-start w-full min-h-screen flex justify-center items-center section">
           <Services />
         </section>
-                <section
+        <section
           className="h-screen snap-start flex justify-center items-center section bg-gray-200"
           id="why-us"
         >
           <Strengths />
+        </section>
+        <section
+          className="h-screen snap-start flex justify-center items-center section "
+          id="reliable-fulfillment"
+        >
+          <Hero />
         </section>
       </div>
     </main>
