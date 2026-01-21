@@ -29,10 +29,11 @@ export default function Navbar({ title, routes }: NavbarProps) {
           <Image
             src="/logo-black.png"
             alt={title}
-            width={40}
-            height={40}
+            width={150}  // ✅ Aumenta esto al tamaño real del logo
+            height={60}  // ✅ Aumenta esto también
             className="h-7 sm:h-10 w-auto ml-2"
             priority
+            quality={100}  // ✅ Calidad máxima
           />
         </Link>
 
