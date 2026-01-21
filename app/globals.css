@@ -1,59 +1,19 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-html, body, #root {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  overflow-x: hidden;
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
 }
 
-.hide-scrollbar {
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE 10+ */
-}
-.hide-scrollbar::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Edge */
-}
-
-/* Ya no necesitas @import de Google Fonts */
-
-/* Clases de fuente usando CSS variables */
-.exo-2 {
-  font-family: var(--font-exo2), sans-serif;
-  font-weight: 700;
-}
-
-.exo-2-bold {
-  font-family: var(--font-exo2), sans-serif;
-  font-weight: 800;
-}
-
-.inter {
-  font-family: var(--font-inter), sans-serif;
-  font-weight: 300;
-}
-
-.inter-bold {
-  font-family: var(--font-inter), sans-serif;
-  font-weight: 700;
-}
-
-.inter-medium {
-  font-family: var(--font-inter), sans-serif;
-  font-weight: 500;
-}
-
-@media (min-width: 768px) {
-  .scroll-container {
-    scroll-snap-type: y proximity;
-    overflow-y: scroll;
-    height: 100vh;
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
   }
-  .section {
-    scroll-snap-align: start;
-    height: 100vh;
-  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
 }
