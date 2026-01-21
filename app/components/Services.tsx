@@ -29,9 +29,8 @@ export default function Services() {
           initial={{ opacity: 0, y: 40 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 1.2, delay: 0.4, ease: "easeOut" }}
-          className="w-full h-[50vh] sm:h-[50vh] md:h-[60vh] px-4 sm:px-8 md:px-24"
+          className="w-full h-[50vh] sm:h-[50vh] md:h-[60vh] px-2 sm:px-8 md:px-24"
         >
-          {/* ✅ Contenedor interno con position relative */}
           <div className="relative w-full h-full overflow-hidden rounded-lg">
             {/* Imagen para desktop (md y superior) */}
             <Image
@@ -62,8 +61,8 @@ export default function Services() {
             flex flex-col md:flex-row flex-wrap 
             justify-start md:justify-around 
             items-center
-            px-4 
-            z-10 relative rounded-lg md:px-64
+            px-2 sm:px-4 md:px-64
+            z-10 relative rounded-lg
           "
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
@@ -90,11 +89,12 @@ export default function Services() {
                 <Link
                   href={service.route}
                   className="
-                    font-extrabold text-black 
+                    inter-bold
+                    font-bold text-black 
                     transition-transform duration-300 hover:scale-110 
                     text-base sm:text-lg md:text-xl 
                     py-1 sm:py-0
-                    inline-block inter-bold
+                    inline-block
                   "
                 >
                   {service.title}
