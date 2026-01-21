@@ -29,11 +29,11 @@ export default function Navbar({ title, routes }: NavbarProps) {
           <Image
             src="/logo-black.png"
             alt={title}
-            width={150}  // ✅ Aumenta esto al tamaño real del logo
-            height={60}  // ✅ Aumenta esto también
+            width={150}
+            height={60}
             className="h-7 sm:h-10 w-auto ml-2"
             priority
-            quality={100}  // ✅ Calidad máxima
+            quality={100}
           />
         </Link>
 
@@ -41,22 +41,20 @@ export default function Navbar({ title, routes }: NavbarProps) {
         <div className="hidden sm:flex flex-row items-center gap-x-5 text-base md:text-md">
           {routes.map((route) =>
             route.sublink ? (
-              // Tiene sublinks
               <div key={route.name} className="relative group">
                 <button
                   onClick={() => toggleSubmenu(route.name)}
-                  className="font-semibold text-black hover:text-blue-600 transition-colors flex items-center gap-1"
+                  className="inter-medium font-semibold text-black hover:text-blue-600 transition-colors flex items-center gap-1"
                 >
                   {route.name} <ChevronDown size={16} />
                 </button>
-                {/* Submenu en desktop */}
                 {openSubmenu === route.name && (
                   <div className="absolute top-full left-0 mt-2 bg-white shadow-md rounded-md p-2 flex flex-col min-w-[180px]">
                     {route.sublink.map((sub) => (
                       <Link
                         key={sub.path}
                         href={sub.path}
-                        className="px-3 py-2 text-sm text-black font-semibold hover:text-blue-600 whitespace-nowrap"
+                        className="inter px-3 py-2 text-sm text-black font-semibold hover:text-blue-600 whitespace-nowrap"
                       >
                         {sub.name}
                       </Link>
@@ -65,15 +63,14 @@ export default function Navbar({ title, routes }: NavbarProps) {
                 )}
               </div>
             ) : route.path ? (
-              // No tiene sublinks y tiene path
               <Link
                 key={route.path}
                 href={route.path}
-                className="font-semibold text-black hover:text-blue-600 transition-colors whitespace-nowrap"
+                className="inter-medium font-semibold text-black hover:text-blue-600 transition-colors whitespace-nowrap"
               >
                 {route.name}
               </Link>
-            ) : null // Si no tiene ni sublink ni path, no renderizar nada
+            ) : null
           )}
           <div className="flex-shrink-0">
             <ContactButton />
@@ -91,11 +88,10 @@ export default function Navbar({ title, routes }: NavbarProps) {
         <div className="sm:hidden flex flex-col gap-3 px-4 pb-4 bg-white shadow-md text-right text-lg">
           {routes.map((route) =>
             route.sublink ? (
-              // Tiene sublinks
               <div key={route.name} className="flex flex-col">
                 <button
                   onClick={() => toggleSubmenu(route.name)}
-                  className="font-semibold text-black hover:text-blue-600 transition-colors flex justify-end gap-2 items-center"
+                  className="inter-medium font-semibold text-black hover:text-blue-600 transition-colors flex justify-end gap-2 items-center"
                 >
                   {route.name}
                   <ChevronDown
@@ -105,14 +101,13 @@ export default function Navbar({ title, routes }: NavbarProps) {
                     }`}
                   />
                 </button>
-                {/* Submenu en móvil */}
                 {openSubmenu === route.name && (
                   <div className="flex flex-col pl-4 mt-2 gap-2">
                     {route.sublink.map((sub) => (
                       <Link
                         key={sub.path}
                         href={sub.path}
-                        className="text-sm font-medium text-black hover:text-blue-600"
+                        className="inter text-sm font-medium text-black hover:text-blue-600"
                         onClick={() => setIsOpen(false)}
                       >
                         {sub.name}
@@ -122,18 +117,16 @@ export default function Navbar({ title, routes }: NavbarProps) {
                 )}
               </div>
             ) : route.path ? (
-              // No tiene sublinks y tiene path
               <Link
                 key={route.path}
                 href={route.path}
-                className="font-semibold text-black hover:text-blue-600 transition-colors"
+                className="inter-medium font-semibold text-black hover:text-blue-600 transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 {route.name}
               </Link>
-            ) : null // Si no tiene ni sublink ni path, no renderizar nada
+            ) : null
           )}
-          {/* ContactButton alineado a la derecha */}
           <div className="self-end">
             <ContactButton />
           </div>

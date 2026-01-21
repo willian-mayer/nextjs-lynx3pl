@@ -1,4 +1,4 @@
-// src/components/Services.tsx
+// app/components/Services.tsx
 'use client';
 
 import { motion, useInView } from "framer-motion";
@@ -29,14 +29,17 @@ export default function Services() {
           initial={{ opacity: 0, y: 40 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 1.2, delay: 0.4, ease: "easeOut" }}
-          className="w-full h-[50vh] sm:h-[50vh] md:h-[60vh] overflow-hidden md:px-24 relative"
+          className="w-full h-[50vh] sm:h-[50vh] md:h-[60vh] overflow-hidden md:px-24"
         >
+          {/* ☝️ SIN padding en móvil, SOLO en desktop (md:px-24) - igual que Vite */}
+          
           {/* Imagen para desktop (md y superior) */}
           <Image
             src="/services/service-md.png"
             alt="Services"
-            fill
-            className="object-cover rounded-lg hidden md:block"
+            width={1920}
+            height={1080}
+            className="w-full h-full object-cover rounded-lg hidden md:block"
             sizes="(max-width: 768px) 0vw, 100vw"
             priority
           />
@@ -45,8 +48,9 @@ export default function Services() {
           <Image
             src="/services/service-xs.png"
             alt="Services"
-            fill
-            className="object-cover rounded-lg md:hidden"
+            width={768}
+            height={768}
+            className="w-full h-full object-cover rounded-lg md:hidden"
             sizes="(max-width: 768px) 100vw, 0vw"
             priority
           />
@@ -87,11 +91,12 @@ export default function Services() {
                 <Link
                   href={service.route}
                   className="
-                    font-extrabold text-black 
+                    inter-bold
+                    font-bold text-black 
                     transition-transform duration-300 hover:scale-110 
                     text-base sm:text-lg md:text-xl 
                     py-1 sm:py-0
-                    inline-block inter-bold
+                    inline-block
                   "
                 >
                   {service.title}
