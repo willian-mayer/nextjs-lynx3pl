@@ -24,34 +24,36 @@ export default function Services() {
       {/* Grid para móviles: imagen arriba, texto abajo */}
       <div className="grid grid-rows-[auto_auto] sm:flex sm:flex-col items-center justify-center gap-4 w-full h-full">
         
-        {/* Imagen hero responsive con padding */}
+        {/* Imagen hero responsive */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 1.2, delay: 0.4, ease: "easeOut" }}
-          className="w-full h-[50vh] sm:h-[50vh] md:h-[60vh] px-2 sm:px-8 md:px-24"
+          className="w-full h-[50vh] sm:h-[50vh] md:h-[60vh] overflow-hidden md:px-24"
         >
-          <div className="relative w-full h-full overflow-hidden rounded-lg">
-            {/* Imagen para desktop (md y superior) */}
-            <Image
-              src="/services/service-md.png"
-              alt="Services"
-              fill
-              className="object-cover hidden md:block"
-              sizes="(max-width: 768px) 0vw, 100vw"
-              priority
-            />
-            
-            {/* Imagen para móvil */}
-            <Image
-              src="/services/service-xs.png"
-              alt="Services"
-              fill
-              className="object-cover md:hidden"
-              sizes="(max-width: 768px) 100vw, 0vw"
-              priority
-            />
-          </div>
+          {/* ☝️ SIN padding en móvil, SOLO en desktop (md:px-24) - igual que Vite */}
+          
+          {/* Imagen para desktop (md y superior) */}
+          <Image
+            src="/services/service-md.png"
+            alt="Services"
+            width={1920}
+            height={1080}
+            className="w-full h-full object-cover rounded-lg hidden md:block"
+            sizes="(max-width: 768px) 0vw, 100vw"
+            priority
+          />
+          
+          {/* Imagen para móvil */}
+          <Image
+            src="/services/service-xs.png"
+            alt="Services"
+            width={768}
+            height={768}
+            className="w-full h-full object-cover rounded-lg md:hidden"
+            sizes="(max-width: 768px) 100vw, 0vw"
+            priority
+          />
         </motion.div>
 
         {/* Lista de servicios */}
@@ -61,8 +63,8 @@ export default function Services() {
             flex flex-col md:flex-row flex-wrap 
             justify-start md:justify-around 
             items-center
-            px-2 sm:px-4 md:px-64
-            z-10 relative rounded-lg
+            px-4 
+            z-10 relative rounded-lg md:px-64
           "
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
