@@ -1,0 +1,17 @@
+[
+  {
+    "language": "English",
+    "short": "EN",
+    "flag": "/flags/US.png"
+  },
+  {
+    "language": "Spanish",
+    "short": "ES",
+    "flag": "/flags/MX.png"
+  },
+  {
+    "language": "Chinese",
+    "short": "中文",
+    "flag": "/flags/CN.png"
+  }
+]
