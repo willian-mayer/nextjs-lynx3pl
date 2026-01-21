@@ -1,0 +1,18 @@
+[
+  {
+    "title": "Warehousing",
+    "route": "/warehousing"
+  },
+  {
+    "title": "Fulfillment",
+    "route": "/fulfillment"
+  },
+  {
+    "title": "Transloading",
+    "route": "/transloading"
+  },
+  {
+    "title": "And more",
+    "route": "/space-rental"
+  }
+]
