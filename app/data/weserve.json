@@ -1,0 +1,87 @@
+[
+  {
+    "title": "We serve",
+    "left": [
+      {
+        "name": "Europe"
+      },
+      {
+        "name": "North America"
+      },
+      {
+        "name": "Asia"
+      },
+      {
+        "name": "South America"
+      },
+      {
+        "name": "Central America"
+      },
+      {
+        "name": "Middle East"
+      },
+      {
+        "name": ""
+      },
+      {
+        "name": ""
+      },
+      {
+        "name": "USPS"
+      },
+      {
+        "name": "UPS"
+      },
+      {
+        "name": "Fedex"
+      },
+      {
+        "name": "DHL"
+      },
+      {
+        "name": "Other Logistics"
+      }
+    ],
+    "right": [
+      {
+        "name": "Sporting goods"
+      },
+      {
+        "name": "Toys"
+      },
+      {
+        "name": "Medical Supplies"
+      },
+      {
+        "name": "Electronics"
+      },
+      {
+        "name": "Tools"
+      },
+      {
+        "name": "Equipment"
+      },
+      {
+        "name": "Home goods"
+      },
+      {
+        "name": "Cosmetics"
+      },
+      {
+        "name": "Food"
+      },
+      {
+        "name": "Auto parts"
+      },
+      {
+        "name": "Raw materials"
+      },
+      {
+        "name": "Building materials"
+      },
+      {
+        "name": "Industrial parts/supplies"
+      }
+    ]
+  }
+]
