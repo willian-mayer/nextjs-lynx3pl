@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import routesData from "./data/routes.json";
 import Strengths from "./components/Strengths";
 import Hero from "./components/Hero";
+import Warehousing from "./components/Warehousing";
 
 export default function Home() {
   return (
@@ -33,6 +34,12 @@ export default function Home() {
           id="reliable-fulfillment"
         >
           <Hero />
+        </section>
+        <section
+          className="h-screen snap-start flex justify-center items-center section bg-gray-200"
+          id="warehousing"
+        >
+          <Warehousing />
         </section>
       </div>
     </main>
