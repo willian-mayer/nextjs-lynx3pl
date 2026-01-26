@@ -1,0 +1,37 @@
+[
+    {
+        "title": "Effortless Fulfillment Services to Streamline Your Business",
+        "desc": "Get your products shipped to customers quickly, accurately, and cost-effectively, for businesses of all sizes.",
+        "benefits": [
+            {
+                "title": "Order Processing",
+                "desc": "Same-day shipping, real- time tracking"
+            },
+                        {
+                "title": "Packaging",
+                "desc": "Offer branded or custom packaging and boxes"
+            },
+                        {
+                "title": "Software Integration",
+                "desc": " Integrations with e-commerce platforms, such as Shopify, Walmart, Amazon,  and more)."
+            },
+                        {
+                "title": "Inventory Management",
+                "desc": "we keep track of your stock & notify you to prevent inventory shortages."
+            },
+                        {
+                "title": "Real-Time Updates",
+                "desc": " monitor your shipment and performance in real –time."
+            },
+                        {
+                "title": "Customer Support",
+                "desc": "Dedicated multilingual team to assist you with seamless communication."
+            },
+                        {
+                "title": "FBA and FBM",
+                "desc": "Hassle-free, we handle it all!"
+            }
+        ]
+    }
+
+]
