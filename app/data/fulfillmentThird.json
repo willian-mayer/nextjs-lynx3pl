@@ -1,0 +1,18 @@
+{
+  "title": "How it works",
+  "step": [
+    {
+      "title": "Step 1",
+      "desc": "Send your products to our warehouse"
+    },
+    {
+      "title": "Step 2",
+      "desc": "We store, pack, and ship your orders"
+    },
+    {
+      "title": "Step 3",
+      "desc": "You track shipments and manage your inventory online."
+    }
+  ],
+  "imageUrl": "/fulfillmentThird/image.jpg"
+}

@@ -8,6 +8,9 @@ import Hero from "./components/Hero";
 import Warehousing from "./components/Warehousing";
 import WarehousingList from "./components/WarehousingList";
 import Gallery from "./components/Gallery";
+import FulfillmentFirst from "./components/FulfillmentFirst";
+import FulfillmentSecond from "./components/FulfillmentSecond";
+import FulfillmentThird from "./components/FulfillmentThird";
 
 export default function Home() {
   return (
@@ -54,6 +57,20 @@ export default function Home() {
           id="inventory"
         >
           <Gallery />
+        </section>
+        <section className="h-screen snap-start flex justify-center items-center section ">
+          <FulfillmentFirst />
+        </section>
+
+        <section className="h-screen snap-start flex justify-center items-center section bg-gray-200">
+          <FulfillmentSecond />
+        </section>
+
+        <section
+          className="h-screen snap-start flex justify-center items-center section "
+          id="steps"
+        >
+          <FulfillmentThird />
         </section>
       </div>
     </main>
