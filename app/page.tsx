@@ -11,6 +11,9 @@ import Gallery from "./components/Gallery";
 import FulfillmentFirst from "./components/FulfillmentFirst";
 import FulfillmentSecond from "./components/FulfillmentSecond";
 import FulfillmentThird from "./components/FulfillmentThird";
+import Transloading from "./components/Transloading";
+import WeServe from "./components/WeServe";
+import Transboarding from "./components/Transboarding";
 
 export default function Home() {
   return (
@@ -71,6 +74,26 @@ export default function Home() {
           id="steps"
         >
           <FulfillmentThird />
+        </section>
+        <section
+          className="h-screen snap-start flex justify-center items-center section bg-gray-200"
+          id="transloading"
+        >
+          <Transloading  />
+        </section>
+
+        <section
+          className="h-screen snap-start flex justify-center items-center section"
+          id="we-serve"
+        >
+          <WeServe />
+        </section>
+
+        <section
+          className="h-screen snap-start flex justify-center items-center section bg-gray-200"
+          id="door-to-door"
+        >
+          <Transboarding />
         </section>
       </div>
     </main>
