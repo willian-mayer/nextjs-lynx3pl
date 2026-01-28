@@ -47,34 +47,36 @@ export default function Form() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     e.stopPropagation();
-
+  
     // Prevenir múltiples envíos
     if (isSubmitting) return;
-
+  
     // Validar que el captcha esté completo
     if (!captchaToken) {
       alert("Please complete the security verification");
       return;
     }
-
+  
     setIsSubmitting(true);
-
+  
     try {
-      const response = await fetch("/contact.php", {
+      const response = await fetch("/api/contact", {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams({
+        headers: { 
+          "Content-Type": "application/json" 
+        },
+        body: JSON.stringify({
           name: formValues.name,
           email: formValues.email,
           message: formValues.message,
-          interests: formValues.interests.join(", "),
-          "cf-turnstile-response": captchaToken,
+          interests: formValues.interests,
+          captchaToken: captchaToken,
         }),
       });
-
-      const result = await response.text();
-
-      if (result === "success") {
+  
+      const result = await response.json();
+  
+      if (response.ok && result.success) {
         // Registrar conversión de Google Ads
         if (typeof window !== 'undefined' && 'gtag' in window) {
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -85,13 +87,15 @@ export default function Form() {
             'currency': 'USD',
           });
         }
-
+  
         router.push("/thank-you");
       } else {
+        // Mostrar error pero igual redirigir
+        console.error('Form submission error:', result.error);
         router.push("/thank-you");
       }
     } catch (error) {
-      console.error(error);
+      console.error('Network error:', error);
       router.push("/thank-you");
     } finally {
       setIsSubmitting(false);
