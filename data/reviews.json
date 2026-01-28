@@ -1,0 +1,34 @@
+{
+    "main" : [
+        {
+            "review": "Dependable. Shipped everything on time including last min changes",
+            "author": "Yara Raun",
+            "country": "Switzerland",
+            "year": "2024",
+            "stars": 5
+        }
+    ],
+    "reviews": [
+        {
+            "review": "I was fortunate to work with Lynx… Given more time and space, I have a wonderful story to share. You made me look like a hero handling ship’s propeller sale in Amsterdam.",
+            "author": "Tony Gaurducci",
+            "country": "California, USA",
+            "year": "2025",
+            "stars": 5
+        },
+                {
+            "review": "Customer Service is perfect; we appreciate it a lot because you know perfectly how to take care about your customers.",
+            "author": "Crotti International",
+            "country": "Italy",
+            "year": "2024",
+            "stars": 5
+        },
+                {
+            "review": "The office staff were very nice and accommodating when I inquired about the variety of services.  Definitely worth checking out.",
+            "author": "Aaron Jarnigan",
+            "country": "Georgia, USA",
+            "year": "2023",
+            "stars": 5
+        }
+    ]
+}

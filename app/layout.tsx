@@ -2,7 +2,7 @@
 import type { Metadata } from "next";
 import { Inter, Exo_2 } from "next/font/google";
 import "./globals.css";
-import FloatingButton from "./components/WhatsappIcon";
+import FloatingButton from "../components/WhatsappIcon";
 
 // Configurar Inter
 const inter = Inter({
