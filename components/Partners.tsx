@@ -46,6 +46,7 @@ const Partners = () => {
 
             {/* Imagen principal */}
             <motion.div
+              className="w-80 h-80 relative"
               variants={fadeDownVariant}
               initial="hidden"
               animate={inView ? "visible" : "hidden"}
@@ -54,10 +55,10 @@ const Partners = () => {
               <Image
                 src="/partners/main-logo-new.png"
                 alt="Main Partner Logo"
-                width={320}
-                height={320}
-                className="w-80 h-80 object-contain"
+                fill
+                className="object-contain"
                 priority
+                sizes="320px"
               />
             </motion.div>
           </div>
@@ -74,6 +75,7 @@ const Partners = () => {
             </motion.h2>
 
             <motion.div
+              className="w-55 h-55 relative"
               variants={fadeDownVariant}
               initial="hidden"
               animate={inView ? "visible" : "hidden"}
@@ -82,10 +84,10 @@ const Partners = () => {
               <Image
                 src="/partners/main-logo-new.png"
                 alt="Main Partner Logo"
-                width={220}
-                height={220}
-                className="w-55 h-55 object-contain"
+                fill
+                className="object-contain"
                 priority
+                sizes="220px"
               />
             </motion.div>
           </div>
@@ -109,22 +111,23 @@ const Partners = () => {
           />
         </motion.div>
 
-        {/* Desktop */}
-        <motion.div
-          className="hidden md:flex w-full justify-center mt-10 md:mt-5 md:p-5 bg-white rounded-xl"
-          variants={fadeUpVariant}
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-        >
-          <Image
-            src="/partners/new-logos-md.png"
-            alt="Partners Logos"
-            width={1800}
-            height={800}
-            className="w-full h-auto object-contain max-w-6xl"
-          />
-        </motion.div>
+{/* Desktop - SIN límite de ancho máximo */}
+<motion.div
+  className="hidden md:flex w-full justify-center mt-10 md:mt-5 md:p-5 bg-white rounded-xl"
+  variants={fadeUpVariant}
+  initial="hidden"
+  animate={inView ? "visible" : "hidden"}
+  transition={{ duration: 0.8, ease: "easeOut" }}
+>
+  <Image
+    src="/partners/new-logos-md.png"
+    alt="Partners Logos"
+    width={1800}
+    height={800}
+    className="w-full h-auto object-contain"
+    sizes="150vw"
+  />
+</motion.div>
       </div>
     </section>
   );
