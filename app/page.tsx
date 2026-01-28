@@ -20,6 +20,7 @@ import Storage from "@/components/Storage";
 import Partners from "@/components/Partners";
 import Footer from "@/components/Footer";
 import Form from "@/components/Form";
+import Subscription from "@/components/Subscription";
 
 export default function Home() {
   return (
@@ -51,18 +52,6 @@ export default function Home() {
         </section>
         <section
           className="h-screen snap-start flex justify-center items-center section bg-gray-200"
-          id="warehousing"
-        >
-          <Warehousing />
-        </section>
-        <section
-          className="h-screen snap-start flex justify-center items-center section "
-          id="values"
-        >
-          <WarehousingList />
-        </section>
-        <section
-          className="h-screen snap-start flex justify-center items-center section bg-gray-200"
           id="inventory"
         >
           <Gallery />
@@ -80,6 +69,18 @@ export default function Home() {
           id="steps"
         >
           <FulfillmentThird />
+        </section>
+        <section
+          className="h-screen snap-start flex justify-center items-center section bg-gray-200"
+          id="warehousing"
+        >
+          <Warehousing />
+        </section>
+        <section
+          className="h-screen snap-start flex justify-center items-center section "
+          id="values"
+        >
+          <WarehousingList />
         </section>
         <section
           className="h-screen snap-start flex justify-center items-center section bg-gray-200"
@@ -134,7 +135,12 @@ export default function Home() {
         >
           <Form />
         </section>
-
+        <section
+          className="h-screen snap-start flex justify-center items-center section "
+          id="values"
+        >
+          <Subscription />
+        </section>
         <section className="h-screen snap-start section" id="let-us-talk">
           <Footer />
         </section>

@@ -4,6 +4,7 @@ import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
 import routesData from "../../data/routes.json";
 import FloatingButton from "../../components/WhatsappIcon";
+import Subscription from "@/components/Subscription";
 
 export default function ContactPage() {
   return (
@@ -14,7 +15,12 @@ export default function ContactPage() {
         <section className="h-screen snap-start">
           <Form />
         </section>
-        
+        <section
+          className="h-screen snap-start flex justify-center items-center section "
+          id="values"
+        >
+          <Subscription />
+        </section>
         <section className="h-screen snap-start">
           <Footer />
         </section>

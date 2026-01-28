@@ -4,6 +4,7 @@ import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
 import ThankYou from "../../components/ThankYou";
 import routesData from "../../data/routes.json";
+import Subscription from "@/components/Subscription";
 
 export default function ThankYouPage() {
   return (
@@ -14,7 +15,12 @@ export default function ThankYouPage() {
         <section className="h-screen snap-start flex justify-center items-center section">
           <ThankYou />
         </section>
-        
+        <section
+          className="h-screen snap-start flex justify-center items-center section "
+          id="values"
+        >
+          <Subscription />
+        </section>
         <section className="h-screen snap-start section">
           <Footer />
         </section>

@@ -6,6 +6,7 @@ import routesData from "../../data/routes.json";
 import Form from "../../components/Form";
 import Footer from "../../components/Footer";
 import FloatingButton from "../../components/WhatsappIcon";
+import Subscription from "@/components/Subscription";
 
 export default function SpaceRentalPage() {
   return (
@@ -24,7 +25,12 @@ export default function SpaceRentalPage() {
         <section className="h-screen snap-start flex justify-center items-center section" id="form">
           <Form />
         </section>
-
+        <section
+          className="h-screen snap-start flex justify-center items-center section "
+          id="values"
+        >
+          <Subscription />
+        </section>
         <section className="h-screen snap-start section">
           <Footer />
         </section>

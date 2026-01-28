@@ -11,6 +11,7 @@ import Form from "../../components/Form";
 import Footer from "../../components/Footer";
 import FloatingButton from "../../components/WhatsappIcon";
 import routesData from "../../data/routes.json";
+import Subscription from "@/components/Subscription";
 
 export default function FulfillmentPage() {
   return (
@@ -52,7 +53,12 @@ export default function FulfillmentPage() {
         >
           <Form />
         </section>
-
+        <section
+          className="h-screen snap-start flex justify-center items-center section "
+          id="values"
+        >
+          <Subscription />
+        </section>
         <section className="h-screen snap-start section">
           <Footer />
         </section>

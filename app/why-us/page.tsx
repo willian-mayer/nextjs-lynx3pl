@@ -8,6 +8,7 @@ import Partners from "../../components/Partners";
 import Reviews from "../../components/Reviews";
 import Strengths from "../../components/Strengths";
 import routesData from "../../data/routes.json";
+import Subscription from "@/components/Subscription";
 
 export default function WhyUsPage() {
   return (
@@ -34,7 +35,12 @@ export default function WhyUsPage() {
         <section className="h-screen snap-start flex justify-center items-center section" id="form">
           <Form />
         </section>
-
+        <section
+          className="h-screen snap-start flex justify-center items-center section "
+          id="values"
+        >
+          <Subscription />
+        </section>
         <section className="h-screen snap-start section">
           <Footer />
         </section>
