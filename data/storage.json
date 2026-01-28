@@ -1,0 +1,32 @@
+{
+  "title": "Versatile storage options & individual office spaces",
+  "desc": "Our individual small offices and individual warehouse spaces, ranging from 600 to 5,000 square feet, are uniquely designed and completely separate from our main warehouse. These private workspaces offer flexibility and privacy, making them ideal for entrepreneurs with specialized business needs.",
+  "desktop": [
+    {
+      "imageUrl": "/storage/3-rev.jpg"
+    },
+    {
+      "imageUrl": "/storage/4-rev-new.jpg"
+    },
+    {
+      "imageUrl": "/storage/2-rev.jpg"
+    },
+    {
+      "imageUrl": "/storage/5-rev.jpg"
+    },
+    {
+      "imageUrl": "/storage/1-rev.jpg"
+    },
+    {
+      "imageUrl": "/storage/6.jpg"
+    }
+  ],
+  "smartphone": [
+    {
+        "imageTop": "/storage/small-top.png"
+    },
+    {
+        "imageBottom": "/storage/small-bottom.png"
+    }
+  ]
+}
