@@ -21,7 +21,7 @@ const exo2 = Exo_2({
 });
 
 export const metadata: Metadata = {
-  title: "Lynx 3PL - Logistics Solutions",
+  title: "Lynx 3PL",
   description: "Warehousing, Fulfillment, and Logistics Services",
 };
 
