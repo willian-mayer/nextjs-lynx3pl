@@ -1,0 +1,308 @@
+{
+    "name": "{{2.name}}",
+    "email": "{{2.email}}",
+    "phoneNumber": "{{2.phone}}",
+    "locations": ["{{7.data.data[1].uid}}"],
+    "tags": ["019bdc85-0614-7f08-bff7-d8f37e16ed05"]
+  }
+
+  https://api.podium.com/v4/contacts
+
+
+  <script>
+(function() {
+    // Wait for DOM to be ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initRvfForm);
+    } else {
+        initRvfForm();
+    }
+    
+    function initRvfForm() {
+        var rvfCurrentStep = 1;
+        var rvfFormData = {};
+        
+        window.rvfNextStep = function() {
+            var isValid = true;
+            
+            if (rvfCurrentStep === 1) {
+                var name = document.getElementById('rvfName');
+                var nameError = document.getElementById('rvfNameError');
+                if (name && name.value.trim() === '') {
+                    name.classList.add('error');
+                    if (nameError) nameError.classList.add('show');
+                    isValid = false;
+                } else if (name) {
+                    name.classList.remove('error');
+                    if (nameError) nameError.classList.remove('show');
+                    rvfFormData.name = name.value;
+                }
+            }
+            
+            if (rvfCurrentStep === 2) {
+                // Validate phone
+                var phone = document.getElementById('rvfPhone');
+                var phoneError = document.getElementById('rvfPhoneError');
+                var phoneNumbers = phone.value.replace(/\D/g, '').substring(1);
+                
+                if (phone && (phone.value.trim() === '+1 ' || phoneNumbers.length < 10)) {
+                    phone.classList.add('error');
+                    if (phoneError) {
+                        phoneError.textContent = 'Please enter a valid 10-digit US phone number';
+                        phoneError.classList.add('show');
+                    }
+                    isValid = false;
+                } else if (phone) {
+                    phone.classList.remove('error');
+                    if (phoneError) phoneError.classList.remove('show');
+                    rvfFormData.phone = phone.value;
+                }
+                
+                // Validate email
+                var email = document.getElementById('rvfEmail');
+                var emailError = document.getElementById('rvfEmailError');
+                var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (email && !emailPattern.test(email.value)) {
+                    email.classList.add('error');
+                    if (emailError) emailError.classList.add('show');
+                    isValid = false;
+                } else if (email) {
+                    email.classList.remove('error');
+                    if (emailError) emailError.classList.remove('show');
+                    rvfFormData.email = email.value;
+                }
+            }
+            
+            if (isValid && rvfCurrentStep < 3) {
+                var currentStepEl = document.querySelector('.rvf-form-step[data-step="' + rvfCurrentStep + '"]');
+                var currentBreadcrumb = document.querySelector('.rvf-breadcrumb-step[data-step="' + rvfCurrentStep + '"]');
+                
+                if (currentStepEl) currentStepEl.classList.remove('active');
+                if (currentBreadcrumb) {
+                    currentBreadcrumb.classList.remove('active');
+                    currentBreadcrumb.classList.add('completed');
+                }
+                
+                rvfCurrentStep++;
+                
+                var nextStepEl = document.querySelector('.rvf-form-step[data-step="' + rvfCurrentStep + '"]');
+                var nextBreadcrumb = document.querySelector('.rvf-breadcrumb-step[data-step="' + rvfCurrentStep + '"]');
+                
+                if (nextStepEl) nextStepEl.classList.add('active');
+                if (nextBreadcrumb) nextBreadcrumb.classList.add('active');
+            }
+        };
+        
+        window.rvfPrevStep = function() {
+            if (rvfCurrentStep > 1) {
+                var currentStepEl = document.querySelector('.rvf-form-step[data-step="' + rvfCurrentStep + '"]');
+                var currentBreadcrumb = document.querySelector('.rvf-breadcrumb-step[data-step="' + rvfCurrentStep + '"]');
+                
+                if (currentStepEl) currentStepEl.classList.remove('active');
+                if (currentBreadcrumb) currentBreadcrumb.classList.remove('active');
+                
+                rvfCurrentStep--;
+                
+                var prevStepEl = document.querySelector('.rvf-form-step[data-step="' + rvfCurrentStep + '"]');
+                var prevBreadcrumb = document.querySelector('.rvf-breadcrumb-step[data-step="' + rvfCurrentStep + '"]');
+                
+                if (prevStepEl) prevStepEl.classList.add('active');
+                if (prevBreadcrumb) {
+                    prevBreadcrumb.classList.add('active');
+                    prevBreadcrumb.classList.remove('completed');
+                }
+            }
+        };
+        
+        window.rvfSubmitForm = function(event) {
+            if (event) event.preventDefault();
+            
+            var service = document.getElementById('rvfService');
+            var serviceError = document.getElementById('rvfServiceError');
+            
+            if (service && service.value === '') {
+                service.classList.add('error');
+                if (serviceError) serviceError.classList.add('show');
+                return false;
+            } else if (service) {
+                service.classList.remove('error');
+                if (serviceError) serviceError.classList.remove('show');
+                rvfFormData.service = service.value;
+            }
+            
+            // Format phone
+            var cleanPhone = rvfFormData.phone
+                .replace(/[\s\(\)\-\u2010-\u2015\u2212]/g, '')
+                .replace(/[^\d\+]/g, '');
+            
+            if (!cleanPhone.startsWith('+')) {
+                if (cleanPhone.startsWith('1')) {
+                    cleanPhone = '+' + cleanPhone;
+                } else {
+                    cleanPhone = '+1' + cleanPhone;
+                }
+            }
+            rvfFormData.phone = cleanPhone;
+            
+            // Send data to Make
+            var webhookURL = 'https://hook.us2.make.com/ps56scgmecaw3mgj43x13hrswlot7oxe';
+            
+            var formDataToSend = {
+                name: rvfFormData.name,
+                phone: rvfFormData.phone,
+                email: rvfFormData.email,
+                service: rvfFormData.service
+            };
+            
+            console.log('Sending data to Make:', formDataToSend);
+            
+            fetch(webhookURL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formDataToSend)
+            })
+            .then(function(response) {
+                if (response.ok) {
+                    console.log('Successfully sent to Make!');
+                    return response.text();
+                }
+                throw new Error('Network response was not ok');
+            })
+            .then(function(data) {
+                console.log('Response from Make:', data);
+                
+                var form = document.getElementById('rvfMultiStepForm');
+                var breadcrumbs = document.querySelector('.rvf-breadcrumbs');
+                var successMessage = document.getElementById('rvfSuccessMessage');
+                
+                if (form) form.style.display = 'none';
+                if (breadcrumbs) breadcrumbs.style.display = 'none';
+                if (successMessage) successMessage.classList.add('show');
+            })
+            .catch(function(error) {
+                console.error('Error sending data:', error);
+                alert('There was an error submitting the form. Please try again.');
+            });
+            
+            return false;
+        };
+        
+        // ***** Mobile-friendly button event handlers *****
+        var nextButtons = document.querySelectorAll('.rvf-btn-next');
+        nextButtons.forEach(function(btn) {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                rvfNextStep();
+            });
+        });
+
+        var prevButtons = document.querySelectorAll('.rvf-btn-prev');
+        prevButtons.forEach(function(btn) {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                rvfPrevStep();
+            });
+        });
+
+        var submitButton = document.querySelector('.rvf-btn-submit');
+        if (submitButton) {
+            submitButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                rvfSubmitForm(e);
+            });
+        }
+        
+        // Remove error on input
+        var inputs = document.querySelectorAll('.rvf-form-group input, .rvf-form-group select');
+        inputs.forEach(function(input) {
+            input.addEventListener('input', function() {
+                this.classList.remove('error');
+                var errorId = this.id + 'Error';
+                var errorElement = document.getElementById(errorId);
+                if (errorElement) {
+                    errorElement.classList.remove('show');
+                }
+            });
+            
+            input.addEventListener('change', function() {
+                this.classList.remove('error');
+                var errorId = this.id + 'Error';
+                var errorElement = document.getElementById(errorId);
+                if (errorElement) {
+                    errorElement.classList.remove('show');
+                }
+            });
+        });
+        
+        // ***** Phone formatting with +1 fixed *****
+        var phoneInput = document.getElementById('rvfPhone');
+        
+        if (phoneInput) {
+            phoneInput.value = '+1 ';
+            
+            phoneInput.addEventListener('focus', function() {
+                if (this.value === '') {
+                    this.value = '+1 ';
+                }
+            });
+            
+            phoneInput.addEventListener('keydown', function(e) {
+                var cursorPosition = this.selectionStart;
+                
+                if ((e.key === 'Backspace' || e.key === 'Delete') && cursorPosition <= 3) {
+                    e.preventDefault();
+                    return;
+                }
+                
+                if (cursorPosition < 3 && e.key !== 'ArrowLeft' && e.key !== 'ArrowRight' && e.key !== 'Tab') {
+                    this.setSelectionRange(this.value.length, this.value.length);
+                }
+            });
+            
+            phoneInput.addEventListener('input', function(e) {
+                var value = this.value;
+                
+                if (!value.startsWith('+1 ')) {
+                    this.value = '+1 ';
+                    return;
+                }
+                
+                var numbers = value.slice(3).replace(/\D/g, '');
+                numbers = numbers.substring(0, 10);
+                
+                var formatted = '+1 ';
+                
+                if (numbers.length > 0) {
+                    formatted += '(' + numbers.substring(0, 3);
+                }
+                if (numbers.length >= 3) {
+                    formatted += ') ' + numbers.substring(3, 6);
+                }
+                if (numbers.length >= 6) {
+                    formatted += '-' + numbers.substring(6, 10);
+                }
+                
+                this.value = formatted;
+                
+                var cleanPhone = '+1' + numbers;
+                rvfFormData.phone = cleanPhone;
+            });
+            
+            phoneInput.addEventListener('click', function() {
+                if (this.selectionStart < 3) {
+                    this.setSelectionRange(this.value.length, this.value.length);
+                }
+            });
+        }
+    }
+})();
+</script>
+
+https://hook.us2.make.com/9epasw4cn5prjvlpcs4f6l057b27s9xy
+
+ac-repair 019c104c-6730-78f1-83d2-fe362767c20b
