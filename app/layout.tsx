@@ -33,7 +33,18 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${exo2.variable}`}>
 
-
+           <head>
+      <Script src="https://www.googletagmanager.com/gtag/js?id=G-XGPTMW1ZJJ" strategy="afterInteractive"/>
+      <Script id="google-analytics" strategy="afterInteractive">
+      {`
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+    
+        gtag('config', 'G-XGPTMW1ZJJ');
+      `}
+      </Script>
+      </head>
       
       <body className={inter.className}>
         {/* Contenido de cada página */}
