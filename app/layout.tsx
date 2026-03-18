@@ -1,6 +1,7 @@
 // app/layout.tsx
 import type { Metadata } from "next";
 import { Inter, Exo_2 } from "next/font/google";
+import Script from "next/script"; // ✅ FIX: added import
 import "./globals.css";
 import FloatingButton from "../components/WhatsappIcon";
 
@@ -20,9 +21,13 @@ const exo2 = Exo_2({
   display: "swap",
 });
 
+// ✅ UPDATED METADATA (Google verification added here)
 export const metadata: Metadata = {
   title: "Lynx 3PL",
   description: "Warehousing, Fulfillment, and Logistics Services",
+  verification: {
+    google: "Z-Ge-CzQ6v76HCtVy6MPjdIATa33-u4eh8HCKV4j8ng",
+  },
 };
 
 export default function RootLayout({
@@ -32,25 +37,24 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} ${exo2.variable}`}>
-
-           <head>
-      <Script src="https://www.googletagmanager.com/gtag/js?id=G-XGPTMW1ZJJ" strategy="afterInteractive"/>
-      <Script id="google-analytics" strategy="afterInteractive">
-      {`
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-    
-        gtag('config', 'G-XGPTMW1ZJJ');
-      `}
-      </Script>
+      <head>
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-XGPTMW1ZJJ"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-XGPTMW1ZJJ');
+          `}
+        </Script>
       </head>
-      
+
       <body className={inter.className}>
-        {/* Contenido de cada página */}
         {children}
-        
-        {/* FloatingButton estará en todas las páginas */}
         <FloatingButton />
       </body>
     </html>
